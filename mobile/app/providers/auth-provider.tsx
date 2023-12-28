@@ -24,7 +24,22 @@ Splash.preventAutoHideAsync();
 const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const [user, setUser] = useState<IUserState>(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    let isMounted = false;
+
+    const getUserFromStorage = async () => {
+      if (isMounted) {
+      }
+
+      await Splash.hideAsync();
+    };
+
+    getUserFromStorage();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <AuthContext.Provider
